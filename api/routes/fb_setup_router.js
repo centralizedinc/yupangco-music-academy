@@ -124,7 +124,6 @@ function setupPersistentMenu(callback) {
     ChatbotResponseDao.findOne({
         postback: "PERSISTENT_MENU"
     }).then((persistent_menu) => {
-        console.log('persistent_menu :', persistent_menu);
         return axios.post(
             constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
             (persistent_menu && persistent_menu.message) ? persistent_menu.message : json
