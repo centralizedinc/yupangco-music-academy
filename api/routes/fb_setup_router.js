@@ -13,6 +13,7 @@ var message_helper = require('../utils/message_helper.js');
  */
 fb_setup_router.route("/")
     .get((req, res) => {
+        console.log('test')
         var responses = [];
         setupGetStarted((response1) => {
             responses.push(response1);
