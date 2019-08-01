@@ -128,6 +128,7 @@ function setupPersistentMenu(callback) {
         if (persistent_menu && persistent_menu.message) {
             console.log(persistent_menu.message);
             json = persistent_menu.message
+            console.log('object :', constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }));
         }
         return axios.post(
             constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
