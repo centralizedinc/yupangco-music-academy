@@ -137,6 +137,7 @@ function setupPersistentMenu(callback) {
     }).then((response) => {
         callback(response.data);
     }).catch((err) => {
+        console.log('err :', err);
         callback(err);
     });
 }
