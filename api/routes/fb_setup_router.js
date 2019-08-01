@@ -7,13 +7,13 @@ var path = require('path');
 var fb_setup_router = express.Router();
 var constants_helper = require('../utils/constants_helper.js');
 var message_helper = require('../utils/message_helper.js');
+var ChatbotResponseDao = require('../dao/ChatbotResponseDao')
 
 /**
  *  setup all route
  */
 fb_setup_router.route("/")
     .get((req, res) => {
-        console.log('test')
         var responses = [];
         setupGetStarted((response1) => {
             responses.push(response1);
@@ -103,34 +103,9 @@ function setupPersistentMenu(callback) {
                 "composer_input_disabled": true,
                 "call_to_actions": [
                     {
-                        "title": "Browse Courses",
+                        "title": "GET STARTED",
                         "type": "postback",
-                        "payload": "BROWSE_COURSES"
-                    },
-                    {
-                        "title": "Branches",
-                        "type": "nested",
-                        "call_to_actions": [{
-                            "title": "Metro Manila",
-                            "type": "postback",
-                            "payload": "METRO_MANILA_BRANCHES"
-                        }, {
-                            "title": "Regional Branches",
-                            "type": "postback",
-                            "payload": "REGIONAL_BRANCHES"
-                        }, {
-                            "title": "More Branches",
-                            "type": "nested",
-                            "call_to_actions": [{
-                                "title": "Franchise Branches",
-                                "type": "postback",
-                                "payload": "FRANCHISE_BRANCHES"
-                            }, {
-                                "title": "Dealer Branches",
-                                "type": "postback",
-                                "payload": "DEALER_BRANCHES"
-                            }]
-                        }]
+                        "payload": "GET_STARTED"
                     },
                     {
                         "title": "About",
@@ -146,10 +121,15 @@ function setupPersistentMenu(callback) {
         ]
     }
 
-    axios.post(
-        constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
-        json
-    ).then((response) => {
+    ChatbotResponseDao.findOne({
+        postback: "PERSISTENT_MENU"
+    }).then((persistent_menu) => {
+        console.log('persistent_menu :', persistent_menu);
+        return axios.post(
+            constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
+            (persistent_menu && persistent_menu.message) ? persistent_menu.message : json
+        )
+    }).then((response) => {
         callback(response.data);
     }).catch((err) => {
         callback(err);
