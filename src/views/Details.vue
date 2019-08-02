@@ -17,7 +17,7 @@ export default {
   },
   created() {
     console.log("this.$route.query :", this.$route.query);
-    this.course = this.$route.query.course;
+    this.course = parseInt(this.$route.query.course);
   }
 };
 </script>

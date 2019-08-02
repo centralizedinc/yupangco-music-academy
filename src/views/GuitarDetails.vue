@@ -124,7 +124,7 @@ export default {
   },
   created() {
     console.log("this.$route.query :", this.$route.query);
-    this.level = this.$route.query.level;
+    this.level = parseInt(this.$route.query.level);
   },
   computed: {
     amount() {
