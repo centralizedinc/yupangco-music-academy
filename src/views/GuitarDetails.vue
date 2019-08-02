@@ -1,15 +1,16 @@
 <template>
-  <a-card :title="`🎸 GUITAR LESSONS – ${titles[level]} LEVEL`">
+  <a-card 
+    :title="`🎸 GUITAR LESSONS – ${titles[level]} LEVEL`" 
+    headStyle="background: #F2E9C8;font-weight:bold;"
+    bodyStyle="text-align: left">
+    <img :src="images[level]" slot="cover"/>
     <a-row>
       <a-col :span="24">
         <div v-if="level===0">
           <p class="price">Starts at ₱10,000.00</p>
-          <br />
-          <br />
           <p>Gain skills with our guitar playing lessons from chord playing to basic finger styles</p>
-          <a-list size="small" :dataSource="primary_checklist">
-            <a-list-item slot="renderItem" slot-scope="item">✔️ {{item}}</a-list-item>
-          </a-list>
+          <p v-for="(item, index) in primary_checklist" :key="index">✔️ {{item}}</p>
+          <br>
         </div>
         <div v-else-if="level===1">
           <p class="price">Starts at ₱9,500.00</p>
@@ -42,18 +43,18 @@
         </div>
       </a-col>
       <a-col :span="24">
-        <a-divider></a-divider>
-      </a-col>
-      <a-col :span="24">
+        <span style="padding-right: 5px">Number of lessons: </span>
         <a-button
+          style="margin-right: 10px"
           v-for="(item, index) in lessons"
           :key="index"
           @click="lesson=index"
-          :type="lesson===index?'primary':'ghost'"
+          :type="lesson===index?'primary':'default'"
         >{{item}}</a-button>
       </a-col>
       <a-col :span="24" v-if="amount">
-        <span class="price">₱{{amount}}</span>
+        <br>
+        <div style="font-size: 20px;">Service Fee: <span class="price" style="font-size: 22px;">₱ {{amount}}</span></div>
       </a-col>
     </a-row>
   </a-card>
@@ -65,6 +66,11 @@ export default {
     return {
       level: null,
       titles: ["PRIMARY", "INTERMEDIATE", "ADVANCE"],
+      images: [
+        "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-primary-1.jpg",
+        "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-intermediate-2.jpg",
+        "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-advance.jpg"
+      ],
       primary_checklist: [
         "Guitar Parts,Tuning",
         "Rudiments,Positioning",
@@ -131,7 +137,7 @@ export default {
       var amount = this.amounts.find(
         x => x.level === this.level && x.lesson === this.lesson
       );
-      return amount;
+      return amount && amount.cost ? amount.cost : null;
     }
   }
 };
@@ -140,6 +146,6 @@ export default {
 <style>
 .price {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }
 </style>
