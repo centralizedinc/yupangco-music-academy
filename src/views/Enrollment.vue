@@ -29,14 +29,14 @@ export default {
   methods: {
     enroll() {
       //   callback
-      MessengerExtensions.requestCloseBrowser(
-        function success() {
-          // webview closed
+      this.$store.dispatch("WEBVIEW_CALLBACK", {
+        details: {
+          course: this.course,
+          level: parseInt(this.$route.query.level)
         },
-        function error(err) {
-          // an error occurred
-        }
-      );
+        sender: this.$route.query.sender,
+        postback: `CALLBACK_ENROLLMENT_#${this.getCourse(this.course)}_${this.getLevel(parseInt(this.$route.query.level))}_${this.getLesson(this.lesson)}`
+      });
     }
   }
 };

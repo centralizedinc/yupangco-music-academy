@@ -76,7 +76,14 @@ webhook_router.route("/")
                 if (keyword !== null
                     && keyword !== undefined
                     && keyword !== "") {
-                    processRequest(sender, keyword, null, ()=>{
+                    var params = null
+                    if (keyword.indexOf("CALLBACK_ENROLLMENT") > -1) {
+                        var data = keyword.split("_#")[1];
+                        var { course, level, lesson } = data.split("_");
+                        params = { course, level, lesson }
+                        keyword = data[0]
+                    }
+                    processRequest(sender, keyword, params, () => {
                         res.sendStatus(200);
                     })
                 } else {
@@ -126,7 +133,7 @@ function processRequest(sender, text, callback_params, callback_output) {
             if (typeof resp !== 'undefined' && resp.length > 0) {
                 async.forEachSeries(Object.keys(resp),
                     (itr, callback) => {
-                        var reply = resp[itr];                        
+                        var reply = resp[itr];
                         if (reply.service) {
                             // service
                             service_facade.callService(sender, reply,
@@ -134,20 +141,20 @@ function processRequest(sender, text, callback_params, callback_output) {
                                     //service return an array of messages
                                     if (array_messages) {
                                         array_messages.forEach(array_msg => {
-                                            
-                                            messages.push(replaceKeywords(sender, array_msg));
+
+                                            messages.push(replaceKeywords(sender, array_msg, text, callback_params));
                                         });
                                     } else {
-                                        messages.push(replaceKeywords(sender, formatted_msg));
+                                        messages.push(replaceKeywords(sender, formatted_msg, text, callback_params));
                                     }
                                     callback();
                                 }, callback_params)
                         } else {
                             // send message directly
-                            messages.push(replaceKeywords(sender, reply.message));
+                            messages.push(replaceKeywords(sender, reply.message, text, callback_params));
                             callback();
                         }
-                    }, (err) => {                        
+                    }, (err) => {
                         sender_helper.sendSeriesMessages(sender, messages, (status) => {
                             callback_output();
                         });
@@ -172,13 +179,20 @@ String.prototype.replaceAll = function (find, replace) {
  * 
  * @param {Object} message 
  */
-function replaceKeywords(sender, message){
+function replaceKeywords(sender, message, text, callback_params) {
 
     var message_string = JSON.stringify(message);
 
     message_string = message_string.replaceAll("{#sender}", sender);
     message_string = message_string.replaceAll("{#platform}", "facebook");
 
+    if(callback_params){
+        if(text === "CALLBACK_ENROLLMENT"){
+            callback_params.keys().forEach(key => {
+                message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
+            })
+        }
+    }
 
     return JSON.parse(message_string);
 }
