@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Details from './views/Details.vue'
+import Enrollment from './views/Enrollment.vue'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/details',
       name: 'Details',
       component: Details
+    },
+    {
+      path: '/enroll',
+      name: 'Enrollment',
+      component: Enrollment
     },
     {
       path: '/about',

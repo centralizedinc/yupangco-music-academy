@@ -1,24 +1,20 @@
 <template>
-  <a-card 
-    :title="`🎸 GUITAR LESSONS – ${titles[level]} LEVEL`" 
-    headStyle="background: #F2E9C8;font-weight:bold;"
-    bodyStyle="text-align: left">
-    <img :src="images[level]" slot="cover"/>
+  <a-card
+    :title="`🎸 GUITAR LESSONS – ${titles[level]} LEVEL`"
+    :headStyle="{background: '#F2E9C8', 'font-weight':'bold'}"
+    bodyStyle="text-align: left"
+  >
+    <img :src="images[level]" slot="cover" />
     <a-row>
       <a-col :span="24">
         <div v-if="level===0">
           <p class="price">Starts at ₱10,000.00</p>
           <p>Gain skills with our guitar playing lessons from chord playing to basic finger styles</p>
           <p v-for="(item, index) in primary_checklist" :key="index">✔️ {{item}}</p>
-          <br>
         </div>
         <div v-else-if="level===1">
           <p class="price">Starts at ₱9,500.00</p>
-          <br />
-          <br />
           <p>Development of progress on guitar playing with emphasis on increased skills in chording, arpeggiation, passing chords, scales, accompaniment, improvisation, melodic reading, and development of personal style.</p>
-          <br />
-          <br />
           <b>
             <i>Reminder:</i>
           </b>
@@ -27,14 +23,8 @@
         </div>
         <div v-else-if="level===2">
           <p class="price">Starts at ₱10,500.00</p>
-          <br />
-          <br />
           <p>At this level we start to see faster Alternate Picking, more complex rhythmic figures such as galloping and triplets, along with some more complex chord shapes.</p>
-          <br />
-          <br />
           <p>This level emphasizes the development of style, articulation, dynamics, rhythmic ability and skills inherent to performance. Students will receive guidance and direction in solving problems related to playing the guitar on an advanced level and will learn many of the different styles, skills and techniques required to become a successful guitarist.</p>
-          <br />
-          <br />
           <b>
             <i>Reminder:</i>
           </b>
@@ -43,18 +33,22 @@
         </div>
       </a-col>
       <a-col :span="24">
-        <span style="padding-right: 5px">Number of lessons: </span>
+        <br />
+        <span style="padding-right: 5px">Number of lessons:</span>
         <a-button
           style="margin-right: 10px"
           v-for="(item, index) in lessons"
           :key="index"
-          @click="lesson=index"
-          :type="lesson===index?'primary':'default'"
+          @click="updateLesson(index)"
+          :type="$store.state.lesson===index?'primary':'default'"
         >{{item}}</a-button>
       </a-col>
       <a-col :span="24" v-if="amount">
-        <br>
-        <div style="font-size: 20px;">Service Fee: <span class="price" style="font-size: 22px;">₱ {{amount}}</span></div>
+        <br />
+        <div style="font-size: 20px;">
+          Service Fee:
+          <span class="price" style="font-size: 22px;">₱ {{amount}}</span>
+        </div>
       </a-col>
     </a-row>
   </a-card>
@@ -64,7 +58,6 @@
 export default {
   data() {
     return {
-      level: null,
       titles: ["PRIMARY", "INTERMEDIATE", "ADVANCE"],
       images: [
         "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-primary-1.jpg",
@@ -78,7 +71,6 @@ export default {
         "Chromatic scales & arpeggios"
       ],
       lessons: [12, 24, 48],
-      lesson: null,
       amounts: [
         {
           level: 0,
@@ -128,16 +120,21 @@ export default {
       ]
     };
   },
-  created() {
-    console.log("this.$route.query :", this.$route.query);
-    this.level = parseInt(this.$route.query.level);
-  },
   computed: {
+    level() {
+      return parseInt(this.$route.query.level);
+    },
     amount() {
       var amount = this.amounts.find(
-        x => x.level === this.level && x.lesson === this.lesson
+        x => x.level === this.level && x.lesson === this.$store.state.lesson
       );
       return amount && amount.cost ? amount.cost : null;
+    }
+  },
+  methods: {
+    updateLesson(index) {
+      console.log('update lesson');
+      this.$store.commit("SET_LESSON", index);
     }
   }
 };
