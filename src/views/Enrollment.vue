@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     enroll() {
+      console.log("this.$route.query :", this.$route.query)
       //   callback
       this.$store.dispatch("WEBVIEW_CALLBACK", {
         details: {

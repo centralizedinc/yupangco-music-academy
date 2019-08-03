@@ -44,6 +44,8 @@ webhook_router.route("/")
      */
     .post((req, res) => {
 
+        console.log('req.body :', req.body);
+
         //identify event
         var event = req.body.entry[0];
 
