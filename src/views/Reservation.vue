@@ -19,6 +19,10 @@
       <span style="color: red">*</span> Age
       <a-input v-model="details.student.age" style="width: 50px; margin-left: 50px"/>
     </p>
+    <p>
+      <span style="color: red">*</span> Birthdate
+      <a-input v-model="details.student.birthdate"/>
+    </p>
   </a-card>
 </template>
 
