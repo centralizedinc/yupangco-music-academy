@@ -80,8 +80,9 @@ webhook_router.route("/")
                     && keyword !== "") {
                     var params = null
                     if (keyword.indexOf("CALLBACK_ENROLLMENT") > -1) {
-                        var data = keyword.split("_#")[1];
-                        var { course, level, lesson } = data.split("_");
+                        var data = keyword.split("_#");
+                        var [course, level, lesson] = data[1].split("_");
+                        console.log('data :', data);
                         params = { course, level, lesson }
                         keyword = data[0]
                     }
@@ -133,6 +134,7 @@ function processRequest(sender, text, callback_params, callback_output) {
     ChatbotResponse.find({ postback: text })
         .sort({ 'index': 'ascending' })
         .exec((err, resp) => {
+            console.log('resp :', JSON.stringify(resp));
             if (typeof resp !== 'undefined' && resp.length > 0) {
                 async.forEachSeries(Object.keys(resp),
                     (itr, callback) => {
@@ -189,9 +191,12 @@ function replaceKeywords(sender, message, text, callback_params) {
     message_string = message_string.replaceAll("{#sender}", sender);
     message_string = message_string.replaceAll("{#platform}", "facebook");
 
+
+    console.log('callback_params :', JSON.stringify(callback_params));
+    console.log('text :', text);
     if (callback_params) {
         if (text === "CALLBACK_ENROLLMENT") {
-            callback_params.keys().forEach(key => {
+            Object.keys(callback_params).forEach(key => {
                 message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
             })
         }

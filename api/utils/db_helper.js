@@ -3,7 +3,7 @@
 //DB connection
 // =============================================================================
 var mongoose = require('mongoose');
-var uri = 'mongodb://heroku_bm8t3wbq:eba6slghb8m3dqtb6b95repnmv@ds143132.mlab.com:43132/heroku_bm8t3wbq';
+var uri = 'mongodb://heroku_1px691zj:rvee6obnilgd7lgktrkf9e3ibc@ds151007.mlab.com:51007/heroku_1px691zj';
 
 mongoose.Promise = require('bluebird');
 

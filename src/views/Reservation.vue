@@ -21,7 +21,7 @@
     </p>
     <p>
       <span style="color: red">*</span> Birthdate
-      <a-input v-model="details.student.birthdate"/>
+      <a-date-picker v-model="details.student.birthdate"/>
     </p>
   </a-card>
 </template>

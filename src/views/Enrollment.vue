@@ -27,7 +27,7 @@ export default {
     }
   },
   created() {
-    console.log("this.$route.query enrollment :", this.$route.query)
+    console.log("this.$route.query enrollment :", this.$route.query);
   },
   methods: {
     enroll() {
@@ -38,7 +38,11 @@ export default {
           level: parseInt(this.$route.query.level)
         },
         sender: this.$route.query.sender,
-        postback: `CALLBACK_ENROLLMENT_#${this.getCourse(this.course)}_${this.getLevel(parseInt(this.$route.query.level))}_${this.getLesson(this.lesson)}`
+        postback: `CALLBACK_ENROLLMENT_#${this.getCourse(
+          this.course
+        )}_${this.getLevel(parseInt(this.$route.query.level))}_${this.getLesson(
+          this.lesson
+        )}`
       });
     }
   }
