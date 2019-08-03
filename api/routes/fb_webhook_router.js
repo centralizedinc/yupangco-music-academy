@@ -44,7 +44,7 @@ webhook_router.route("/")
      */
     .post((req, res) => {
 
-        console.log('req.body :', req.body);
+        console.log('req.body :', JSON.stringify(req.body));
 
         //identify event
         var event = req.body.entry[0];
@@ -85,6 +85,7 @@ webhook_router.route("/")
                         params = { course, level, lesson }
                         keyword = data[0]
                     }
+                    console.log('processRequest :', JSON.stringify({ keyword, params }));
                     processRequest(sender, keyword, params, () => {
                         res.sendStatus(200);
                     })
@@ -188,8 +189,8 @@ function replaceKeywords(sender, message, text, callback_params) {
     message_string = message_string.replaceAll("{#sender}", sender);
     message_string = message_string.replaceAll("{#platform}", "facebook");
 
-    if(callback_params){
-        if(text === "CALLBACK_ENROLLMENT"){
+    if (callback_params) {
+        if (text === "CALLBACK_ENROLLMENT") {
             callback_params.keys().forEach(key => {
                 message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
             })
