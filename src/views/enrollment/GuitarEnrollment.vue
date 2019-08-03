@@ -1,8 +1,8 @@
 <template>
   <a-card
     :title="`🎸 GUITAR LESSONS – ${titles[level]} LEVEL`"
-    headStyle="background: #F2E9C8;font-weight:bold;"
-    bodyStyle="text-align: left"
+    :headStyle="card_head_style"
+    :bodyStyle="card_body_style"
   >
     <a-row>
       <a-col :span="24" v-if="level===1||level===2">
@@ -19,6 +19,7 @@
       <a-col :span="24">
         <br />
         <span style="padding-right: 5px">Choose number of lessons:</span>
+        <br>
         <a-button
           style="margin-right: 10px"
           v-for="(item, index) in lessons"
@@ -121,6 +122,12 @@ export default {
     },
     level() {
       return parseInt(this.$route.query.level);
+    },
+    card_head_style() {
+      return { background: "#F2E9C8", "font-weight": "bold" };
+    },
+    card_body_style() {
+      return { "text-align": "left" };
     }
   },
   methods: {

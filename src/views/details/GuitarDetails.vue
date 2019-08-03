@@ -1,8 +1,8 @@
 <template>
   <a-card
     :title="`🎸 GUITAR LESSONS – ${titles[level]} LEVEL`"
-    :headStyle="{background: '#F2E9C8', 'font-weight':'bold'}"
-    bodyStyle="text-align: left"
+    :headStyle="card_head_style"
+    :bodyStyle="card_body_style"
   >
     <img :src="images[level]" slot="cover" />
     <a-row>
@@ -34,7 +34,8 @@
       </a-col>
       <a-col :span="24">
         <br />
-        <span style="padding-right: 5px">Number of lessons:</span>
+        <span style="padding-right: 5px">Choose number of lessons:</span>
+        <br />
         <a-button
           style="margin-right: 10px"
           v-for="(item, index) in lessons"
@@ -129,11 +130,17 @@ export default {
         x => x.level === this.level && x.lesson === this.$store.state.lesson
       );
       return amount && amount.cost ? amount.cost : null;
+    },
+    card_head_style() {
+      return { background: "#F2E9C8", "font-weight": "bold" };
+    },
+    card_body_style() {
+      return { "text-align": "left" };
     }
   },
   methods: {
     updateLesson(index) {
-      console.log('update lesson');
+      console.log("update lesson");
       this.$store.commit("SET_LESSON", index);
     }
   }
