@@ -193,7 +193,6 @@ function replaceKeywords(sender, message, text, callback_params) {
 
 
     console.log('callback_params :', JSON.stringify(callback_params));
-    console.log('text :', text);
     if (callback_params) {
         if (text === "CALLBACK_ENROLLMENT") {
             Object.keys(callback_params).forEach(key => {
@@ -201,6 +200,7 @@ function replaceKeywords(sender, message, text, callback_params) {
             })
         }
     }
+    console.log('text :', message_string);
 
     return JSON.parse(message_string);
 }
