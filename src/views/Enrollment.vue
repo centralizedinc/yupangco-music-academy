@@ -27,7 +27,7 @@ export default {
     }
   },
   created() {
-    console.log("this.$route.query enrollment :", this.$route.query);
+    if (this.lesson) this.enroll();
   },
   methods: {
     enroll() {

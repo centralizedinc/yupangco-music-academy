@@ -61,9 +61,9 @@ export default {
     return {
       titles: ["PRIMARY", "INTERMEDIATE", "ADVANCE"],
       images: [
-        "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-primary-1.jpg",
-        "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-intermediate-2.jpg",
-        "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-advance.jpg"
+        "https://yupangco-music-academy.herokuapp.com/assets/guitar-primary.jpg",
+        "https://yupangco-music-academy.herokuapp.com/assets/guitar-intermediate.jpg",
+        "https://yupangco-music-academy.herokuapp.com/assets/guitar-advance.jpg"
       ],
       primary_checklist: [
         "Guitar Parts,Tuning",

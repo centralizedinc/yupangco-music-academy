@@ -1,26 +1,26 @@
 <template>
   <a-card title="Billing Details" :headStyle="card_head_style" :bodyStyle="card_body_style">
     <p>
-      <span style="color: red">*</span> First Name
+      First Name<span style="color: red">*</span>
       <a-input v-model="details.student.first_name"/>
     </p>
     <p>
-      <span style="color: red">*</span> Last Name
-      <a-input v-model="details.student.Last_name"/>
+      Last Name<span style="color: red">*</span>
+      <a-input v-model="details.student.last_name"/>
     </p>
     <p>
-      <span style="color: red">*</span> Gender
+      Gender<span style="color: red">*</span>
       <a-radio-group style="margin-left: 25px;" v-model="details.student.gender">
         <a-radio value="male">Male</a-radio>
         <a-radio value="female">Female</a-radio>
       </a-radio-group>
     </p>
     <p>
-      <span style="color: red">*</span> Age
+      Age<span style="color: red">*</span>
       <a-input v-model="details.student.age" style="width: 50px; margin-left: 50px"/>
     </p>
     <p>
-      <span style="color: red">*</span> Birthdate
+      Birth date<span style="color: red">*</span>
       <a-date-picker v-model="details.student.birthdate"/>
     </p>
   </a-card>

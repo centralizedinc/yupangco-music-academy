@@ -4,6 +4,7 @@
     :headStyle="card_head_style"
     :bodyStyle="card_body_style"
   >
+    <img :src="images[level]" slot="cover" />
     <a-row>
       <a-col :span="24" v-if="level===1||level===2">
         <i>
@@ -13,13 +14,13 @@
         <div v-for="(item, index) in checklist[level]" :key="index">
           <span style="color: red">*</span>
           {{item}}
-          <br/>
+          <br />
         </div>
       </a-col>
       <a-col :span="24">
         <br />
         <span style="padding-right: 5px">Choose number of lessons:</span>
-        <br>
+        <br />
         <a-button
           style="margin-right: 10px"
           v-for="(item, index) in lessons"
@@ -62,6 +63,11 @@ export default {
           "melodic reading",
           "development of personal style"
         ]
+      ],
+      images: [
+        "https://yupangco-music-academy.herokuapp.com/assets/guitar-primary.jpg",
+        "https://yupangco-music-academy.herokuapp.com/assets/guitar-intermediate.jpg",
+        "https://yupangco-music-academy.herokuapp.com/assets/guitar-advance.jpg"
       ],
       lessons: [12, 24, 48],
       amounts: [

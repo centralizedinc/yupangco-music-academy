@@ -28,6 +28,7 @@ app.use(function (req, res, next) {
 require('./api/utils/db_helper').connect();
 
 
+app.use('/assets', express.static(path.join(__dirname, './assets')));
 //Routes
 //#############################################################################
 app.use('/api', require('./api/routes/api_router'))
