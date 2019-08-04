@@ -1,0 +1,284 @@
+{
+    "drums": [
+        {
+            "level": 0,
+            "lesson": 0,
+            "cost": 10000
+        },
+        {
+            "level": 0,
+            "lesson": 1,
+            "cost": 19500
+        },
+        {
+            "level": 0,
+            "lesson": 2,
+            "cost": 38500
+        },
+        {
+            "level": 1,
+            "lesson": 0,
+            "cost": 9500
+        },
+        {
+            "level": 1,
+            "lesson": 1,
+            "cost": 18500
+        },
+        {
+            "level": 1,
+            "lesson": 2,
+            "cost": 36500
+        },
+        {
+            "level": 2,
+            "lesson": 0,
+            "cost": 10500
+        },
+        {
+            "level": 2,
+            "lesson": 1,
+            "cost": 20500
+        },
+        {
+            "level": 2,
+            "lesson": 2,
+            "cost": 40500
+        }
+    ],
+    "wind": [
+        {
+            "level": 0,
+            "lesson": 0,
+            "cost": 10000
+        },
+        {
+            "level": 0,
+            "lesson": 1,
+            "cost": 19500
+        },
+        {
+            "level": 0,
+            "lesson": 2,
+            "cost": 38500
+        },
+        {
+            "level": 1,
+            "lesson": 0,
+            "cost": 9500
+        },
+        {
+            "level": 1,
+            "lesson": 1,
+            "cost": 18500
+        },
+        {
+            "level": 1,
+            "lesson": 2,
+            "cost": 36500
+        },
+        {
+            "level": 2,
+            "lesson": 0,
+            "cost": 10500
+        },
+        {
+            "level": 2,
+            "lesson": 1,
+            "cost": 20500
+        },
+        {
+            "level": 2,
+            "lesson": 2,
+            "cost": 40500
+        }
+    ],
+    "voice": [
+        {
+            "level": 0,
+            "lesson": 0,
+            "cost": 10000
+        },
+        {
+            "level": 0,
+            "lesson": 1,
+            "cost": 19500
+        },
+        {
+            "level": 0,
+            "lesson": 2,
+            "cost": 38500
+        },
+        {
+            "level": 1,
+            "lesson": 0,
+            "cost": 9500
+        },
+        {
+            "level": 1,
+            "lesson": 1,
+            "cost": 18500
+        },
+        {
+            "level": 1,
+            "lesson": 2,
+            "cost": 36500
+        },
+        {
+            "level": 2,
+            "lesson": 0,
+            "cost": 10500
+        },
+        {
+            "level": 2,
+            "lesson": 1,
+            "cost": 20500
+        },
+        {
+            "level": 2,
+            "lesson": 2,
+            "cost": 40500
+        }
+    ],
+    "piano": [
+        {
+            "level": 0,
+            "lesson": 0,
+            "cost": 10000
+        },
+        {
+            "level": 0,
+            "lesson": 1,
+            "cost": 19500
+        },
+        {
+            "level": 0,
+            "lesson": 2,
+            "cost": 38500
+        },
+        {
+            "level": 1,
+            "lesson": 0,
+            "cost": 9500
+        },
+        {
+            "level": 1,
+            "lesson": 1,
+            "cost": 18500
+        },
+        {
+            "level": 1,
+            "lesson": 2,
+            "cost": 36500
+        },
+        {
+            "level": 2,
+            "lesson": 0,
+            "cost": 10500
+        },
+        {
+            "level": 2,
+            "lesson": 1,
+            "cost": 20500
+        },
+        {
+            "level": 2,
+            "lesson": 2,
+            "cost": 40500
+        }
+    ],
+    "violin": [
+        {
+            "level": 0,
+            "lesson": 0,
+            "cost": 10000
+        },
+        {
+            "level": 0,
+            "lesson": 1,
+            "cost": 19500
+        },
+        {
+            "level": 0,
+            "lesson": 2,
+            "cost": 38500
+        },
+        {
+            "level": 1,
+            "lesson": 0,
+            "cost": 9500
+        },
+        {
+            "level": 1,
+            "lesson": 1,
+            "cost": 18500
+        },
+        {
+            "level": 1,
+            "lesson": 2,
+            "cost": 36500
+        },
+        {
+            "level": 2,
+            "lesson": 0,
+            "cost": 10500
+        },
+        {
+            "level": 2,
+            "lesson": 1,
+            "cost": 20500
+        },
+        {
+            "level": 2,
+            "lesson": 2,
+            "cost": 40500
+        }
+    ],
+    "guitar": [
+        {
+            "level": 0,
+            "lesson": 0,
+            "cost": 10000
+        },
+        {
+            "level": 0,
+            "lesson": 1,
+            "cost": 19500
+        },
+        {
+            "level": 0,
+            "lesson": 2,
+            "cost": 38500
+        },
+        {
+            "level": 1,
+            "lesson": 0,
+            "cost": 9500
+        },
+        {
+            "level": 1,
+            "lesson": 1,
+            "cost": 18500
+        },
+        {
+            "level": 1,
+            "lesson": 2,
+            "cost": 36500
+        },
+        {
+            "level": 2,
+            "lesson": 0,
+            "cost": 10500
+        },
+        {
+            "level": 2,
+            "lesson": 1,
+            "cost": 20500
+        },
+        {
+            "level": 2,
+            "lesson": 2,
+            "cost": 40500
+        }
+    ]
+}

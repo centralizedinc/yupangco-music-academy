@@ -1,5 +1,8 @@
 <template>
-    <a-card title="Payment via ECPay">
+    <a-card 
+        title="Payment via ECPay"
+        :headStyle="card_head_style"
+        :bodyStyle="card_body_style">
         <p style="font-weight:bold;">
             Your Reference Number:
         </p>
@@ -24,12 +27,18 @@ export default {
             return d.getFullYear().toString() + (d.getMonth() + 1).toString() + this.random_number
         },
         random_number(){
-            return Math.floor(Math.random() * 999);
+            return Math.floor(Math.random() * 9999);
+        },
+        card_head_style() {
+        return { background: "#F2E9C8", "font-weight": "bold" };
+        },
+        card_body_style() {
+        return { "text-align": "left" };
         }
     },
     methods: {
         close(){
-            this.$store.dispatch("RESET", {sender: this.$route.query.sender, postback: "CALLBACK_ECPAY"})
+            this.$store.dispatch("CLOSE", {sender: this.$route.query.sender, postback: "CALLBACK_ECPAY"})
         }
     },
 }

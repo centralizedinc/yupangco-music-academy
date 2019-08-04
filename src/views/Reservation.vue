@@ -21,7 +21,7 @@
     <p>
       Age
       <span style="color: red">*</span>
-      <a-input v-model="details.student.age" style="width: 50px; margin-left: 50px" />
+      <a-input-number :min="1" v-model="details.student.age" style="width: 50px; margin-left: 50px" />
     </p>
     <p>
       Birth date

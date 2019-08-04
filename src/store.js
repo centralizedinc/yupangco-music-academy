@@ -55,6 +55,9 @@ export default new Vuex.Store({
       console.log('data :', data);
       context.commit('RESET_DETAILS')
       return new api().callbackWebview(data.sender, data.postback)
+    },
+    CLOSE(context, data) {
+      return new api().callbackWebview(data.sender, data.postback)
     }
   }
 })
