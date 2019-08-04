@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import Details from './views/Details.vue'
 import Enrollment from './views/Enrollment.vue'
 import Reservation from './views/Reservation.vue'
+import CreditCard from './views/payment/CreditCard'
+import ECPay from './views/payment/ECPay'
 
 Vue.use(Router)
 
@@ -28,6 +30,16 @@ export default new Router({
       path: '/reservation',
       name: 'Reservation',
       component: Reservation
+    },
+    {
+      path: '/payment/creditcard',
+      name: 'Credit Card',
+      component: CreditCard
+    },
+    {
+      path: '/payment/ecpay',
+      name: 'EC Pay',
+      component: ECPay
     },
     {
       path: '/about',

@@ -26,7 +26,7 @@
     <p>
       Birth date
       <span style="color: red">*</span>
-      <a-date-picker v-model="details.student.birthdate" />
+      <a-date-picker v-model="details.student.birthdate" style="margin-left: 15px" />
     </p>
     <p>
       Payor's Name
@@ -60,7 +60,7 @@
     <p>
       Province
       <span style="color: red">*</span>
-      <a-select v-model="details.address_details.province">
+      <a-select style="width: 100%" v-model="details.address_details.province">
         <a-select-option v-for="(item, index) in provinces" :key="index" :value="item">{{item}}</a-select-option>
       </a-select>
     </p>
@@ -72,7 +72,6 @@
     <p>
       Additional Information
       <span style="color: red">*</span>
-      <a-input v-model="details.additional_info" />
       <a-textarea v-model="details.additional_info" :autosize="{ minRows: 2, maxRows: 4 }" />
     </p>
     <a-button type="Primary" block @click="submit">Submit</a-button>

@@ -27,6 +27,18 @@ export default new Vuex.Store({
     },
     SET_DETAILS(state, data) {
       state.details = data
+    },
+    RESET_DETAILS(state, data) {
+      state.lesson = null
+      state.course = null
+      state.level = null
+      state.details = {
+        student: {},
+        payor: {},
+        address_details: {},
+        additional_info: "",
+        order: {}
+      }
     }
   },
   actions: {
@@ -37,6 +49,11 @@ export default new Vuex.Store({
     RESERVATION(context, data) {
       console.log('data :', data);
       context.commit('SET_DETAILS', data.details)
+      return new api().callbackWebview(data.sender, data.postback)
+    },
+    RESET(context, data) {
+      console.log('data :', data);
+      context.commit('RESET_DETAILS')
       return new api().callbackWebview(data.sender, data.postback)
     }
   }
