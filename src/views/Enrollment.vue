@@ -32,7 +32,7 @@ export default {
   methods: {
     enroll() {
       //   callback
-      this.$store.dispatch("WEBVIEW_CALLBACK", {
+      this.$store.dispatch("ENROLLMENT", {
         details: {
           course: this.course,
           level: parseInt(this.$route.query.level)

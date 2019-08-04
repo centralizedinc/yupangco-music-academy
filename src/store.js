@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import api from './webview_api'
 
 Vue.use(Vuex)
 
@@ -8,7 +8,14 @@ export default new Vuex.Store({
   state: {
     lesson: null,
     course: null,
-    level: null
+    level: null,
+    details: {
+      student: {},
+      payor: {},
+      address_details: {},
+      additional_info: "",
+      order: {}
+    }
   },
   mutations: {
     SET_LESSON(state, data) {
@@ -17,40 +24,20 @@ export default new Vuex.Store({
     SET_COURSE_LEVEL(state, data) {
       state.course = data.course;
       state.level = data.level;
+    },
+    SET_DETAILS(state, data) {
+      state.details = data
     }
   },
   actions: {
-    WEBVIEW_CALLBACK(context, data) {
-      return new Promise((resolve, reject) => {
-        context.commit('SET_COURSE_LEVEL', data.details)
-        axios.post('https://yupangco-music-academy.herokuapp.com/facebook/webhook',
-          {
-            entry: [{
-              messaging: [{
-                sender: {
-                  id: data.sender
-                },
-                postback: {
-                  payload: data.postback
-                }
-              }]
-            }]
-          })
-          .then((result) => {
-            MessengerExtensions.requestCloseBrowser(
-              function success() {
-                resolve()
-                // webview closed
-              },
-              function error(err) {
-                reject(err)
-                // an error occurred
-              }
-            );
-          }).catch((err) => {
-            reject(err)
-          });
-      })
+    ENROLLMENT(context, data) {
+      context.commit('SET_COURSE_LEVEL', data.details)
+      return new api().callbackWebview(data.sender, data.postback)
+    },
+    RESERVATION(context, data) {
+      console.log('data :', data);
+      context.commit('SET_DETAILS', data.details)
+      return new api().callbackWebview(data.sender, data.postback)
     }
   }
 })
