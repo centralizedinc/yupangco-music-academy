@@ -27,7 +27,7 @@ export default {
     }
   },
   created() {
-    if (this.lesson) this.enroll();
+    if (this.$$route.query.level && parseInt(this.$$route.query.level) === 0 && this.lesson) this.enroll();
   },
   methods: {
     enroll() {
