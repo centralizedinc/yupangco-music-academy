@@ -125,6 +125,7 @@ export default {
     }
   },
   created() {
+    console.log("this.$route.query :", this.$route.query);
     this.card_details.mode = 0;
     this.card_details.reference_no = this.getReferenceNumber();
     this.card_details.sender = this.$route.query.sender;

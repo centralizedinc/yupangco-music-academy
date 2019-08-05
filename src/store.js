@@ -15,15 +15,18 @@ export default new Vuex.Store({
       address_details: {},
       additional_info: "",
       order: {}
-    }
+    },
+    sender: null
   },
   mutations: {
     SET_LESSON(state, data) {
       state.lesson = data
     },
-    SET_COURSE_LEVEL(state, data) {
+    SET_ORDER(state, data) {
       state.course = data.course;
       state.level = data.level;
+      state.lesson = data.lesson;
+      state.sender = data.sender;
     },
     SET_DETAILS(state, data) {
       state.details = data
@@ -43,7 +46,6 @@ export default new Vuex.Store({
   },
   actions: {
     ENROLLMENT(context, data) {
-      context.commit('SET_COURSE_LEVEL', data.details)
       return new api().callbackWebview(data.sender, data.postback)
     },
     RESERVATION(context, data) {

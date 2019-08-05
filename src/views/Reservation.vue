@@ -79,7 +79,6 @@
     </p>
     <!-- <a-button type="Primary" block @click="submit">Submit</a-button> -->
     <a-button type="primary" block @click="submit('creditcard')">Pay with Credit Card</a-button>
-    <a-divider></a-divider>
     <a-button type="primary" block @click="submit('ecpay')">Pay with EC Pay</a-button>
   </a-card>
 </template>
@@ -115,14 +114,14 @@ export default {
     card_body_style() {
       return { "text-align": "left" };
     },
-    course(){
-      return this.getCourseCode(this.$route.query.course)
+    course() {
+      return this.getCourseCode(this.$route.query.course);
     },
-    level(){
-      return this.getLevelCode(this.$route.query.level)
+    level() {
+      return this.getLevelCode(this.$route.query.level);
     },
-    lesson(){
-      return this.getLessonCode(parseInt(this.$route.query.lesson))
+    lesson() {
+      return this.getLessonCode(parseInt(this.$route.query.lesson));
     }
   },
   methods: {
@@ -138,8 +137,14 @@ export default {
     },
     submit(mode) {
       this.details.sender = this.$route.query.sender;
+      this.$store.commit("SET_ORDER", {
+        course: this.course,
+        level: this.level,
+        lesson: this.lesson,
+        sender: this.$route.query.sender
+      });
       this.$store.commit("SET_DETAILS", this.details);
-      this.$router.push(`/payment/${mode}`, { query: this.$route.query });
+      this.$router.push(`/payment/${mode}`);
       // this.$store.dispatch("RESERVATION", {
       //   details: this.details,
       //   sender: this.$route.query.sender,
