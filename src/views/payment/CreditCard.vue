@@ -83,13 +83,13 @@ export default {
   },
   computed: {
     course() {
-      return this.getCourseCode(this.$route.query.course);
+      return this.$store.state.course;
     },
     level() {
-      return this.getLevelCode(this.$route.query.level);
+      return this.$store.state.level;
     },
     lesson() {
-      return this.getLessonCode(parseInt(this.$route.query.lesson));
+      return this.$store.state.lesson;
     },
     details() {
       return [
@@ -125,10 +125,9 @@ export default {
     }
   },
   created() {
-    console.log("this.$route.query :", this.$route.query);
     this.card_details.mode = 0;
     this.card_details.reference_no = this.getReferenceNumber();
-    this.card_details.sender = this.$route.query.sender;
+    this.card_details.sender = this.$store.state.sender;
   },
   methods: {
     submit() {
@@ -139,7 +138,7 @@ export default {
         })
         .then(result => {
           return this.$store.dispatch("CLOSE", {
-            sender: this.$route.query.sender,
+            sender: this.$store.state.sender,
             postback: "CB_PAYMENT"
           });
         })
