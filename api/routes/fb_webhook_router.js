@@ -225,7 +225,7 @@ function getAssessment(course, level) {
     console.log('course :', course);
     console.log('level :', level);
     return assessments.find(x => {
-        return x.course === course && x.level === level
+        return parseInt(x.course) === parseInt(course) && parseInt(x.level) === parseInt(level)
     })
 }
 
