@@ -79,7 +79,7 @@ webhook_router.route("/")
                     && keyword !== undefined
                     && keyword !== "") {
                     var params = null
-                    if (keyword.indexOf("CALLBACK_ENROLLMENT") > -1) {
+                    if (keyword.indexOf("CALLBACK_") > -1) {
                         var data = keyword.split("_#");
                         var [course, level, lesson] = data[1].split("_");
                         console.log('data :', data);
@@ -194,7 +194,7 @@ function replaceKeywords(sender, message, text, callback_params) {
 
     console.log('callback_params :', JSON.stringify(callback_params));
     if (callback_params) {
-        if (text === "CALLBACK_ENROLLMENT") {
+        if (text.indexOf("CALLBACK_") > -1) {
             Object.keys(callback_params).forEach(key => {
                 message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
             })

@@ -125,7 +125,7 @@ export default {
       this.$store.dispatch("RESERVATION", {
         details: this.details,
         sender: this.$route.query.sender,
-        postback: "CALLBACK_RESERVATION"
+        postback: `CALLBACK_RESERVATION_#${this.$store.state.course}_${this.$store.state.level}_${this.$store.state.lesson}`
       });
     }
   }

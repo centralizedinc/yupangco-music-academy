@@ -6,7 +6,7 @@
         <p style="font-weight:bold;">
             Your Reference Number:
         </p>
-        <p style="backgroundfont-weight:bold;margin: 10px; font-size: 36px">
+        <p style="text-align: center; background: lightblue; font-weight:bold;margin: 10px; font-size: 36px">
             {{reference_number}}
         </p>
         <p style="font-weight:bold;text-align: left">General Guidelines:</p>
