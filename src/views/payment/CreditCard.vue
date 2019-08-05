@@ -78,13 +78,13 @@ export default {
   },
   computed: {
     course(){
-      return this.getCourseCode(parseInt(this.$route.query.course))
+      return this.getCourseCode(this.$route.query.course)
     },
     level(){
-      return this.getLevelCode(parseInt(this.$route.query.level))
+      return this.getLevelCode(this.$route.query.level)
     },
     lesson(){
-      return this.getLessonCode(parseInt(this.$route.query.lesson))
+      return this.getLessonCode(this.$route.query.lesson)
     },
     details() {
       return [
