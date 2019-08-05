@@ -8,6 +8,15 @@ export default {
                 deepCopy(obj) {
                     return JSON.parse(JSON.stringify(obj));
                 },
+                getReferenceNumber() {
+                    var d = new Date();
+                    return Math.floor(Math.random() * 9999) +
+                        d.getFullYear().toString() +
+                        (d.getMonth() + 1).toString().length ===
+                        2
+                        ? (d.getMonth() + 1).toString()
+                        : "0" + (d.getMonth() + 1).toString() + Math.floor(Math.random() * 9999);
+                },
                 getCourse(index) {
                     return ["Drums", "Wind", "Voice", "Piano", "Violin", "Guitar"][index]
                 },

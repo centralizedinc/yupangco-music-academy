@@ -19,26 +19,26 @@
         <a-input-number
           placeholder="####-####-####-####"
           style="width: 100%"
-          v-model="card_details.number"
+          v-model="card_details.details.card_number"
           :formatter="value => value.toString().replace(/(?<=\d{4})\d(\d{0})/, '-')"
         />
       </p>
       <p>
         CVC
         <span style="color: red">*</span>
-        <a-input-number style="width: 100%" v-model="card_details.cvc" />
+        <a-input-number style="width: 100%" v-model="card_details.details.cvc" />
       </p>
       <p>
         Card holder
         <span style="color: red">*</span>
-        <a-input v-model="card_details.name" />
+        <a-input v-model="card_details.details.name" />
       </p>
       <p>
         Date Expiry
         <span style="color: red">*</span>
         <a-month-picker
           placeholder="YYYY-MM"
-          v-model="card_details.date_expiry"
+          v-model="card_details.details.date_expiry"
           style="width: 100%"
         />
       </p>
@@ -73,18 +73,23 @@
 export default {
   data() {
     return {
-      card_details: {}
+      card_details: {
+        mode: 0,
+        details: {},
+        reference_no: "",
+        sender: ""
+      }
     };
   },
   computed: {
-    course(){
-      return this.getCourseCode(this.$route.query.course)
+    course() {
+      return this.getCourseCode(this.$route.query.course);
     },
-    level(){
-      return this.getLevelCode(this.$route.query.level)
+    level() {
+      return this.getLevelCode(this.$route.query.level);
     },
-    lesson(){
-      return this.getLessonCode(parseInt(this.$route.query.lesson))
+    lesson() {
+      return this.getLessonCode(parseInt(this.$route.query.lesson));
     },
     details() {
       return [
@@ -106,11 +111,7 @@ export default {
         {
           description: "Service Fee",
           value: this.parseCurrency(
-            this.getServiceFee(
-              this.course,
-              this.level,
-              this.lesson
-            )
+            this.getServiceFee(this.course, this.level, this.lesson)
           )
           //   value: this.parseCurrency(this.getServiceFee(5, 0, 0))
         }
@@ -123,12 +124,30 @@ export default {
       return { "text-align": "left" };
     }
   },
+  created() {
+    this.card_details.mode = 0;
+    this.card_details.reference_no = this.getReferenceNumber();
+    this.card_details.sender = this.$route.query.sender;
+  },
   methods: {
     submit() {
-      this.$store.dispatch("RESET", {
-        sender: this.$route.query.sender,
-        postback: "CB_PAYMENT"
-      });
+      this.$store
+        .dispatch("SUBMIT_ENROLLMENT", {
+          details: this.$store.state.details,
+          payments_details: this.card_details
+        })
+        .then(result => {
+          return this.$store.dispatch("CLOSE", {
+            sender: this.$route.query.sender,
+            postback: "CB_PAYMENT"
+          });
+        })
+        .then(result => {
+          console.log("Success enrollment");
+        })
+        .catch(err => {
+          console.log("Submit enrollment err :", err);
+        });
     }
   }
 };

@@ -21,7 +21,11 @@
     <p>
       Age
       <span style="color: red">*</span>
-      <a-input-number :min="1" v-model="details.student.age" style="width: 50px; margin-left: 50px" />
+      <a-input-number
+        :min="1"
+        v-model="details.student.age"
+        style="width: 50px; margin-left: 50px"
+      />
     </p>
     <p>
       Birth date
@@ -73,7 +77,10 @@
       Additional Information
       <a-textarea v-model="details.additional_info" :autosize="{ minRows: 2, maxRows: 4 }" />
     </p>
-    <a-button type="Primary" block @click="submit">Submit</a-button>
+    <!-- <a-button type="Primary" block @click="submit">Submit</a-button> -->
+    <a-button type="primary" block @click="submit('creditcard')">Pay with Credit Card</a-button>
+    <a-divider></a-divider>
+    <a-button type="primary" block @click="submit('ecpay')">Pay with EC Pay</a-button>
   </a-card>
 </template>
 
@@ -107,6 +114,15 @@ export default {
     },
     card_body_style() {
       return { "text-align": "left" };
+    },
+    course(){
+      return this.getCourseCode(this.$route.query.course)
+    },
+    level(){
+      return this.getLevelCode(this.$route.query.level)
+    },
+    lesson(){
+      return this.getLessonCode(parseInt(this.$route.query.lesson))
     }
   },
   methods: {
@@ -115,17 +131,20 @@ export default {
       this.details.student.last_name = this.$route.query.lname;
       this.details.student.gender = this.$route.query.gender;
       this.details.order = {
-        course: this.$route.query.course,
-        level: this.$route.query.level,
-        lesson: this.$route.query.lesson
+        course: this.course,
+        level: this.level,
+        lesson: this.lesson
       };
     },
-    submit() {
-      this.$store.dispatch("RESERVATION", {
-        details: this.details,
-        sender: this.$route.query.sender,
-        postback: `CALLBACK_RESERVATION_#${this.$route.query.course}_${this.$route.query.level}_${this.$route.query.lesson}`
-      });
+    submit(mode) {
+      this.details.sender = this.$route.query.sender;
+      this.$store.commit("SET_DETAILS", this.details);
+      this.$router.push(`/payment/${mode}`, { query: this.$route.query });
+      // this.$store.dispatch("RESERVATION", {
+      //   details: this.details,
+      //   sender: this.$route.query.sender,
+      //   postback: `CALLBACK_RESERVATION_#${this.$route.query.course}_${this.$route.query.level}_${this.$route.query.lesson}`
+      // });
     }
   }
 };

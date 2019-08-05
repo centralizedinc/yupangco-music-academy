@@ -1,6 +1,6 @@
-const model = require('../models/ServiceModel')
+const model = require('../models/PaymentsModel')
 
-class ServiceDao {
+class PaymentsDao {
     /**
      * @returns {Promise}
      * @param {Object} search 
@@ -27,7 +27,7 @@ class ServiceDao {
 
     /**
      * @returns {Promise}
-     * @param {ServiceModel} details 
+     * @param {PaymentsModel} details 
      */
     static create(details) {
         return (new model(details)).save()
@@ -36,7 +36,7 @@ class ServiceDao {
     /**
      * @returns {Promise}
      * @param {Object} search 
-     * @param {ServiceModel} updated_details 
+     * @param {PaymentsModel} updated_details 
      */
     static modify(search, updated_details) {
         return model.findOneAndUpdate(search, updated_details).exec()
@@ -45,11 +45,11 @@ class ServiceDao {
     /**
      * @returns {Promise}
      * @param {String} id 
-     * @param {ServiceModel} updated_details 
+     * @param {PaymentsModel} updated_details 
      */
     static modifyById(id, updated_details) {
         return model.findByIdAndUpdate(id, updated_details).exec()
     }
 }
 
-module.exports = ServiceDao
+module.exports = PaymentsDao

@@ -61,6 +61,9 @@ export default new Vuex.Store({
     },
     ASSESSMENT(context, data) {
       return new api().callbackWebview(data.sender, data.postback)
+    },
+    SUBMIT_ENROLLMENT(context, data) {
+      return new api().submitEnrollment(data)
     }
   }
 })

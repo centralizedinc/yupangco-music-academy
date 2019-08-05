@@ -3,7 +3,7 @@
     <p style="font-weight:bold;">Your Reference Number:</p>
     <p
       style="text-align: center; background: lightblue; font-weight:bold;margin: 10px; font-size: 36px"
-    >{{reference_number}}</p>
+    >{{card_details.reference_no}}</p>
     <p style="font-weight:bold;text-align: left">General Guidelines:</p>
     <ul style="text-align: left">
       <li>Reference number can only be used once. If you made a short payment by mistake, do not try to correct it by making another bills payment with the same reference number.</li>
@@ -16,30 +16,34 @@
 
 <script>
 export default {
-  created() {
-    console.log(
-      "this.$store.state.details :",
-      JSON.stringify(this.$store.state.details)
-    );
+  data() {
+    return {
+      card_details: {}
+    }
   },
   computed: {
-    reference_number() {
-      var d = new Date();
-      return (
-        d.getFullYear().toString() +
-        (d.getMonth() + 1).toString() +
-        this.random_number
-      );
-    },
-    random_number() {
-      return Math.floor(Math.random() * 9999);
-    },
     card_head_style() {
       return { background: "#F2E9C8", "font-weight": "bold" };
     },
     card_body_style() {
       return { "text-align": "left" };
     }
+  },
+  created() {
+    this.card_details.mode = 0;
+    this.card_details.reference_no = this.getReferenceNumber();
+    this.card_details.sender = this.$route.query.sender;
+    this.$store
+      .dispatch("SUBMIT_ENROLLMENT", {
+        details: this.$store.state.details,
+        payments_details: this.card_details
+      })
+      .then(result => {
+        console.log("Success enrollment");
+      })
+      .catch(err => {
+        console.log("Submit ecpay enrollment err :", err);
+      });
   },
   methods: {
     close() {

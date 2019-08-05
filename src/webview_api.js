@@ -43,4 +43,8 @@ export default class WebviewAPI {
                 });
         })
     }
+
+    submitEnrollment(details) {
+        return axios.post('https://yupangco-music-academy.herokuapp.com/api/enrollment', details)
+    }
 }
