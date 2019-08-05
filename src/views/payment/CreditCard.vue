@@ -127,7 +127,7 @@ export default {
     submit() {
       this.$store.dispatch("RESET", {
         sender: this.$route.query.sender,
-        postback: "CALLBACK_PAYMENT"
+        postback: "CB_PAYMENT"
       });
     }
   }

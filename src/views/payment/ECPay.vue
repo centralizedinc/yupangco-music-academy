@@ -38,7 +38,7 @@ export default {
     },
     methods: {
         close(){
-            this.$store.dispatch("CLOSE", {sender: this.$route.query.sender, postback: "CALLBACK_PAYMENT"})
+            this.$store.dispatch("CLOSE", {sender: this.$route.query.sender, postback: "CB_PAYMENT"})
         }
     },
 }
