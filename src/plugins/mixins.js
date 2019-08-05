@@ -17,6 +17,18 @@ export default {
                 getLesson(index) {
                     return [12, 24, 48][index]
                 },
+                getCourseCode(text) {
+                    var index = ["Drums", "Wind", "Voice", "Piano", "Violin", "Guitar"].findIndex(x => x === text);
+                    return index
+                },
+                getLevelCode(text) {
+                    var index = ["Primary", "Intermediate", "Advance"].findIndex(x => x === text);
+                    return index
+                },
+                getLessonCode(text) {
+                    var index = [12, 24, 48].findIndex(x => x === text);
+                    return index
+                },
                 getServiceFee(course, level, lesson) {
                     console.log('service_fees :', service_fees);
                     console.log('course :', course);
