@@ -65,6 +65,7 @@ export default new Vuex.Store({
       return new api().callbackWebview(data.sender, data.postback)
     },
     SUBMIT_ENROLLMENT(context, data) {
+      console.log('SUBMIT_ENROLLMENT data :', data);
       return new api().submitEnrollment(data)
     }
   }

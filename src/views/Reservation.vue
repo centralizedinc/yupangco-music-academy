@@ -79,6 +79,7 @@
     </p>
     <!-- <a-button type="Primary" block @click="submit">Submit</a-button> -->
     <a-button type="primary" block @click="submit('creditcard')">Pay with Credit Card</a-button>
+    <br>
     <a-button type="primary" block @click="submit('ecpay')">Pay with EC Pay</a-button>
   </a-card>
 </template>

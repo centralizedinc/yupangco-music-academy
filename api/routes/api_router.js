@@ -9,7 +9,7 @@ const PaymentsDao = require('../dao/PaymentsDao')
 
 api_router
     .route('/enrollment')
-    .get((req, res) => {
+    .post((req, res) => {
         var result = {}
         OrdersDao
             .create(req.body.details)
