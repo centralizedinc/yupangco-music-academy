@@ -1,28 +1,38 @@
 <template>
-    <a-card title="Schedule">
-        <div :style="{ border: '1px solid #d9d9d9', borderRadius: '4px' }">
-            <a-calendar :fullscreen="false" @panelChange="changePanel" @change="selectDate"></a-calendar>
-        </div>
-        <div>
-
-        </div>
+  <div>
+    <a-card title="Schedule" v-if="!show_schedule">
+      <p style="text-align: left">
+        Input your reference number:
+        <a-input style="width: 100%;" v-model="ref_no" />
+      </p>
+      <a-button type="primary" block @click="submit">Submit</a-button>
     </a-card>
+    <schedule-card v-else />
+  </div>
 </template>
 
 <script>
+import ScheduleCard from './ScheduleCard'
 export default {
-    methods: {
-        changePanel(value, mode){
-            console.log('value :', value);
-            console.log('mode :', mode);
-        },
-        selectDate(value){
-            console.log('date value :', value.toDate());
-        }
+    components: {
+        ScheduleCard
     },
-}
+  data() {
+    return {
+      ref_no: null,
+      show_schedule: false
+    };
+  },
+  methods: {
+      submit(){
+          this.show_schedule = true;
+      }
+  }
+};
 </script>
 
 <style>
-
+.pointer {
+  cursor: pointer;
+}
 </style>
