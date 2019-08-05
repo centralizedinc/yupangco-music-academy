@@ -1,7 +1,7 @@
 <template>
     <a-card title="Schedule">
         <div :style="{ border: '1px solid #d9d9d9', borderRadius: '4px' }">
-            <a-calendar :fullscreen="false" @panelChange="selectDate"></a-calendar>
+            <a-calendar :fullscreen="false" @panelChange="changePanel" @change="selectDate"></a-calendar>
         </div>
         <div>
 
@@ -12,9 +12,12 @@
 <script>
 export default {
     methods: {
-        selectDate(value, mode){
+        changePanel(value, mode){
             console.log('value :', value);
             console.log('mode :', mode);
+        },
+        selectDate(value){
+            console.log('date value :', value.toDate());
         }
     },
 }

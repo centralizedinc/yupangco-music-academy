@@ -26,7 +26,7 @@ export default {
       return this.$store.state.lesson;
     }
   },
-  beforeCreate(){
+  beforeMount(){
     console.log("level :", this.$route.query.level);
     console.log("this.lesson :", this.lesson);
     if (
