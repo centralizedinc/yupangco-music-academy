@@ -12,7 +12,7 @@
           type="primary"
           :disabled="lesson===null"
           block
-          v-if="reminder"
+          v-if="!reminder"
           @click="submit"
         >Enroll Now !</a-button>
         <a-button type="primary" :disabled="lesson===null" block v-else @click="enroll">Continue</a-button>
