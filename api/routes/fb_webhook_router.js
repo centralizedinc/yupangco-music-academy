@@ -86,6 +86,12 @@ webhook_router.route("/")
                         console.log('data :', data);
                         params = { course, level, lesson }
                         keyword = data[0]
+                    } else if (keyword.indexOf("ASSESSMENT_") > -1) {
+                        var data = keyword.split("_#");
+                        var [course, level] = data[1].split("_");
+                        console.log('data :', data);
+                        params = { course, level }
+                        keyword = data[0]
                     }
                     console.log('processRequest :', JSON.stringify({ keyword, params }));
                     processRequest(sender, keyword, params, () => {
@@ -199,11 +205,25 @@ function replaceKeywords(sender, message, text, callback_params) {
             Object.keys(callback_params).forEach(key => {
                 message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
             })
+        } else if (text.indexOf("ASSESSMENT") > -1) {
+            var data = getAssessment(callback_params.course, callback_params.level);
+            console.log('Assessment data :', data);
+            Object.keys(data)
+                .forEach(key => {
+                    message_string = message_string.replaceAll(`{#${key}}`, data[key])
+                })
         }
     }
     console.log('text :', message_string);
 
     return JSON.parse(message_string);
+}
+
+const assessments = require('./assessments.json')
+function getAssessment(course, level) {
+    return assessments.find(x => {
+        return x.course === course && x.level === level
+    })
 }
 
 module.exports = webhook_router;

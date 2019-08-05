@@ -1,0 +1,109 @@
+[{
+    "course": 0,
+    "level": 0,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/drums-primary-1.jpg",
+    "level_label": "Primary Level",
+    "start_price": "10,000"
+},{
+    "course": 0,
+    "level": 1,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/drums-intermediate-2.jpg",
+    "level_label": "Intermediate",
+    "start_price": "9,500"
+},{
+    "course": 0,
+    "level": 2,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/drums-advance.jpg",
+    "level_label": "Advance Level",
+    "start_price": "10,500"
+},{
+    "course": 1,
+    "level": 0,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/wind-primary-1.jpg",
+    "level_label": "Primary Level",
+    "start_price": "10,000"
+},{
+    "course": 1,
+    "level": 1,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/wind-intermediate-2.jpg",
+    "level_label": "Intermediate",
+    "start_price": "9,500"
+},{
+    "course": 2,
+    "level": 2,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/wind-advance.jpg",
+    "level_label": "Advance Level",
+    "start_price": "10,500"
+},{
+    "course": 2,
+    "level": 0,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/voice-primary-1.jpg",
+    "level_label": "Primary Level",
+    "start_price": "10,000"
+},{
+    "course": 2,
+    "level": 1,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/voice-intermediate-2.jpg",
+    "level_label": "Intermediate",
+    "start_price": "9,500"
+},{
+    "course": 2,
+    "level": 2,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/voice-advance.jpg",
+    "level_label": "Advance Level",
+    "start_price": "10,500"
+},{
+    "course": 3,
+    "level": 0,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/piano-primary-1.jpg",
+    "level_label": "Primary Level",
+    "start_price": "10,000"
+},{
+    "course": 3,
+    "level": 1,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/piano-intermediate-2.jpg",
+    "level_label": "Intermediate",
+    "start_price": "9,500"
+},{
+    "course": 3,
+    "level": 2,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/piano-advance.jpg",
+    "level_label": "Advance Level",
+    "start_price": "10,500"
+},{
+    "course": 4,
+    "level": 0,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/violin-primary-1.jpg",
+    "level_label": "Primary Level",
+    "start_price": "10,000"
+},{
+    "course": 4,
+    "level": 1,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/violin-intermediate-2.jpg",
+    "level_label": "Intermediate",
+    "start_price": "9,500"
+},{
+    "course": 4,
+    "level": 2,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/violin-advance.jpg",
+    "level_label": "Advance Level",
+    "start_price": "10,500"
+},{
+    "course": 5,
+    "level": 0,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-primary-1.jpg",
+    "level_label": "Primary Level",
+    "start_price": "10,000"
+},{
+    "course": 5,
+    "level": 1,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-intermediate-2.jpg",
+    "level_label": "Intermediate",
+    "start_price": "9,500"
+},{
+    "course": 5,
+    "level": 2,
+    "image_url": "http://yupangcomusicacademy.com/wp-content/uploads/2017/05/guitar-advance.jpg",
+    "level_label": "Advance Level",
+    "start_price": "10,500"
+}]

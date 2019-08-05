@@ -1,0 +1,50 @@
+[
+    {
+        "code": "P1",
+        "description": "Guitar Parts,Tuning"
+    },
+    {
+        "code": "P2",
+        "description": "Rudiments,Positioning"
+    },
+    {
+        "code": "P3",
+        "description": "Right hand use of rest & free stroke,Left hand Thumb position"
+    },
+    {
+        "code": "P4",
+        "description": "Chromatic Scales & Arpeggios"
+    },
+    {
+        "code": "I1",
+        "description": "Chording"
+    },
+    {
+        "code": "I2",
+        "description": "Arpeggiation"
+    },
+    {
+        "code": "I3",
+        "description": "Passing Chords"
+    },
+    {
+        "code": "I4",
+        "description": "Scales"
+    },
+    {
+        "code": "I5",
+        "description": "Accompaniment"
+    },
+    {
+        "code": "I6",
+        "description": "Improvisation"
+    },
+    {
+        "code": "I7",
+        "description": "Melodic Reading"
+    },
+    {
+        "code": "I8",
+        "description": "Development of Personal Style"
+    }
+]

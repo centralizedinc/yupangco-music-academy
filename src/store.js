@@ -58,6 +58,9 @@ export default new Vuex.Store({
     },
     CLOSE(context, data) {
       return new api().callbackWebview(data.sender, data.postback)
+    },
+    ASSESSMENT(context, data) {
+      return new api().callbackWebview(data.sender, data.postback)
     }
   }
 })

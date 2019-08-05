@@ -7,6 +7,7 @@ import Reservation from './views/Reservation.vue'
 import CreditCard from './views/payment/CreditCard'
 import ECPay from './views/payment/ECPay'
 import Schedule from './views/Schedule'
+import Assessment from './views/Assessment'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/schedule',
       name: 'Schedule',
       component: Schedule
+    },
+    {
+      path: '/assessment',
+      name: 'Assessment',
+      component: Assessment
     },
     {
       path: '/about',

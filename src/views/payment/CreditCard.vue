@@ -84,7 +84,7 @@ export default {
       return this.getLevelCode(this.$route.query.level)
     },
     lesson(){
-      return this.getLessonCode(this.$route.query.lesson)
+      return this.getLessonCode(parseInt(this.$route.query.lesson))
     },
     details() {
       return [
@@ -127,7 +127,7 @@ export default {
     submit() {
       this.$store.dispatch("RESET", {
         sender: this.$route.query.sender,
-        postback: "CALLBACK_CREDIT_CARD"
+        postback: "CALLBACK_PAYMENT"
       });
     }
   }
