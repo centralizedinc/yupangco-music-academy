@@ -77,30 +77,39 @@ export default {
     };
   },
   computed: {
+    course(){
+      return this.$route.query.course
+    },
+    level(){
+      return this.$route.query.level
+    },
+    lesson(){
+      return this.$route.query.lesson
+    },
     details() {
       return [
         {
           description: "Course",
-          value: this.getCourse(this.$store.state.course)
+          value: this.getCourse(this.course)
           //   value: this.getCourse(5)
         },
         {
           description: "Level",
-          value: this.getLevel(this.$store.state.level)
+          value: this.getLevel(this.level)
           //   value: this.getLevel(0)
         },
         {
           description: "Number of Lesson",
-          value: this.getLesson(this.$store.state.lesson)
+          value: this.getLesson(this.lesson)
           //   value: this.getLesson(0)
         },
         {
           description: "Service Fee",
           value: this.parseCurrency(
             this.getServiceFee(
-              this.$store.state.course,
-              this.$store.state.level,
-              this.$store.state.lesson
+              this.course,
+              this.level,
+              this.lesson
             )
           )
           //   value: this.parseCurrency(this.getServiceFee(5, 0, 0))
