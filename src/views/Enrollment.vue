@@ -26,7 +26,7 @@ export default {
       return this.$store.state.lesson;
     }
   },
-  created() {
+  beforeCreate(){
     console.log("level :", this.$route.query.level);
     console.log("this.lesson :", this.lesson);
     if (
@@ -34,9 +34,8 @@ export default {
       this.$route.query.level !== null &&
       parseInt(this.$route.query.level) === 0 &&
       (this.lesson || this.lesson === 0)
-    ) {
+    )
       this.enroll();
-    }
   },
   methods: {
     enroll() {
