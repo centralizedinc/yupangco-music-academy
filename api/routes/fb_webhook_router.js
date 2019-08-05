@@ -79,6 +79,7 @@ webhook_router.route("/")
                     && keyword !== undefined
                     && keyword !== "") {
                     var params = null
+                    console.log('keyword :', keyword);
                     if (keyword.indexOf("CALLBACK_") > -1) {
                         var data = keyword.split("_#");
                         var [course, level, lesson] = data[1].split("_");

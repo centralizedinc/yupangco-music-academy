@@ -71,7 +71,6 @@
     </p>
     <p>
       Additional Information
-      <span style="color: red">*</span>
       <a-textarea v-model="details.additional_info" :autosize="{ minRows: 2, maxRows: 4 }" />
     </p>
     <a-button type="Primary" block @click="submit">Submit</a-button>
