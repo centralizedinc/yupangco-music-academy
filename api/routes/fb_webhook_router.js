@@ -221,6 +221,9 @@ function replaceKeywords(sender, message, text, callback_params) {
 
 const assessments = require('./assessments.json')
 function getAssessment(course, level) {
+    console.log('assessments :', assessments);
+    console.log('course :', course);
+    console.log('level :', level);
     return assessments.find(x => {
         return x.course === course && x.level === level
     })
