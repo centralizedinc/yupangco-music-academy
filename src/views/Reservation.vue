@@ -115,9 +115,9 @@ export default {
       this.details.student.last_name = this.$route.query.lname;
       this.details.student.gender = this.$route.query.gender;
       this.details.order = {
-        course: this.$store.state.course,
-        level: this.$store.state.level,
-        lesson: this.$store.state.lesson
+        course: this.$route.query.course,
+        level: this.$route.query.level,
+        lesson: this.$route.query.lesson
       };
     },
     submit() {
