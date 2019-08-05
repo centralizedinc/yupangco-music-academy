@@ -6,6 +6,7 @@ import Enrollment from './views/Enrollment.vue'
 import Reservation from './views/Reservation.vue'
 import CreditCard from './views/payment/CreditCard'
 import ECPay from './views/payment/ECPay'
+import Schedule from './views/Schedule'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/payment/ecpay',
       name: 'EC Pay',
       component: ECPay
+    },
+    {
+      path: '/schedule',
+      name: 'Schedule',
+      component: Schedule
     },
     {
       path: '/about',

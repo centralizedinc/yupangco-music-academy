@@ -27,9 +27,13 @@ export default {
     }
   },
   created() {
-    if (this.$route.query.level && parseInt(this.$route.query.level) === 0 && this.lesson) {
-      console.log('level :', this.$route.query.level);
-      console.log('this.lesson :', this.lesson);
+    console.log("level :", this.$route.query.level);
+    console.log("this.lesson :", this.lesson);
+    if (
+      this.$route.query.level &&
+      parseInt(this.$route.query.level) === 0 &&
+      this.lesson
+    ) {
       this.enroll();
     }
   },
