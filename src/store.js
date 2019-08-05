@@ -20,7 +20,20 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_LESSON(state, data) {
+      console.log('data :', data);
       state.lesson = data
+    },
+    SET_COURSE(state, data) {
+      console.log('data :', data);
+      state.course = data
+    },
+    SET_LEVEL(state, data) {
+      console.log('data :', data);
+      state.level = data
+    },
+    SET_SENDER(state, data) {
+      console.log('data :', data);
+      state.sender = data
     },
     SET_ORDER(state, data) {
       state.course = data.course;

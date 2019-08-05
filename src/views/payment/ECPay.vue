@@ -10,7 +10,7 @@
       <li>Amount is inclusive of convenience fee/ If you are paying for multiple reference numbers, pay separately for each reference number. Only one (1) transaction per reference number.</li>
       <li>The payment of fee is not a guarantee that the application will be granted. The processing of the application will still be subject to the evaluation of the concerned YMA personnel and its compliance with the pertinent laws, rules and regulations</li>
     </ul>
-    <a-button type="primary" @click="close" block>CLOSE</a-button>
+    <a-button type="primary" @click="close" block>Continue</a-button>
   </a-card>
 </template>
 
@@ -47,10 +47,11 @@ export default {
   },
   methods: {
     close() {
-      this.$store.dispatch("CLOSE", {
-        sender: this.$store.state.sender,
-        postback: "CB_PAYMENT"
-      });
+      // this.$store.dispatch("CLOSE", {
+      //   sender: this.$store.state.sender,
+      //   postback: "CB_PAYMENT"
+      // });
+      this.$router.push('/qrcode')
     }
   }
 };

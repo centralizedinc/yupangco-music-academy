@@ -116,13 +116,13 @@ export default {
       return { "text-align": "left" };
     },
     course() {
-      return this.getCourseCode(this.$route.query.course);
+      return this.$store.state.course
     },
     level() {
-      return this.getLevelCode(this.$route.query.level);
+      return this.$store.state.level
     },
     lesson() {
-      return this.getLessonCode(parseInt(this.$route.query.lesson));
+      return this.$store.state.lesson
     }
   },
   methods: {
@@ -138,12 +138,12 @@ export default {
     },
     submit(mode) {
       this.details.sender = this.$route.query.sender;
-      this.$store.commit("SET_ORDER", {
-        course: this.course,
-        level: this.level,
-        lesson: this.lesson,
-        sender: this.$route.query.sender
-      });
+      // this.$store.commit("SET_ORDER", {
+      //   course: this.course,
+      //   level: this.level,
+      //   lesson: this.lesson,
+      //   sender: this.$route.query.sender
+      // });
       this.$store.commit("SET_DETAILS", this.details);
       this.$router.push(`/payment/${mode}`);
       // this.$store.dispatch("RESERVATION", {

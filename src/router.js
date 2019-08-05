@@ -8,6 +8,7 @@ import CreditCard from './views/payment/CreditCard'
 import ECPay from './views/payment/ECPay'
 import Schedule from './views/Schedule'
 import Assessment from './views/Assessment'
+import QRCode from './views/QRCode'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/assessment',
       name: 'Assessment',
       component: Assessment
+    },
+    {
+      path: '/qrcode',
+      name: 'QR Code',
+      component: QRCode
     },
     {
       path: '/about',

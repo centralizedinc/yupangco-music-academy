@@ -7,7 +7,7 @@
             <a-calendar :fullscreen="false" @panelChange="changePanel" @change="selectDate"></a-calendar>
           </div>
           <a-list itemLayout="horizontal" :dataSource="schedule">
-            <a-list-item slot="renderItem" slot-scope="item">
+            <a-list-item slot="renderItem" slot-scope="item, index">
               <a-list-item-meta :description="item.description">
                 <span slot="title" style="font-weight: bold">{{item.name}}</span>
                 <a-avatar
@@ -18,7 +18,7 @@
               <a-icon
                 :type="item.selected ? 'minus-circle' : 'plus-circle'"
                 class="pointer"
-                @click="reserve(item)"
+                @click="reserve(index)"
               />
               <!-- <a-icon type="minus-circle" class="pointer" v-else @click="unreserve(item)" /> -->
             </a-list-item>
@@ -74,14 +74,10 @@ export default {
       this.selected_date = value.toDate();
       console.log("date value :", value.toDate());
     },
-    reserve(item) {
-      if (item.selected) this.lesson--;
+    reserve(index) {
+      if (this.schedule[index].selected) this.lesson--;
       else this.lesson++;
-      item.selected = !item.selected;
-    },
-    unreserve(item) {
-      item.selected = false;
-      this.lesson++;
+      this.schedule[index].selected = !this.schedule[index].selected;
     }
   }
 };

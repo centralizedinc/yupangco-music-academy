@@ -43,6 +43,12 @@ export default {
       return parseInt(this.$route.query.course);
     }
   },
+  created() {
+    console.log('this.$route.query :', this.$route.query);
+    this.$store.commit("SET_SENDER", this.$route.query.sender);
+    this.$store.commit("SET_COURSE", this.$route.query.course);
+    this.$store.commit("SET_LEVEL", this.$route.query.level);
+  },
   methods: {
     submit() {
       // this.$router.push({ path: 'enroll', query: this.$route.query })
@@ -50,16 +56,17 @@ export default {
       else this.reminder = true;
     },
     enroll() {
-      this.$store.dispatch("ENROLLMENT", {
-        details: {
-          course: this.course,
-          level: this.level
-        },
-        sender: this.$route.query.sender,
-        postback: `CALLBACK_ENROLLMENT_#${this.getCourse(
-          this.course
-        )}_${this.getLevel(this.level)}_${this.getLesson(this.lesson)}`
-      });
+      this.$router.push("/reservation");
+      // this.$store.dispatch("ENROLLMENT", {
+      //   details: {
+      //     course: this.course,
+      //     level: this.level
+      //   },
+      //   sender: this.$route.query.sender,
+      //   postback: `CALLBACK_ENROLLMENT_#${this.getCourse(
+      //     this.course
+      //   )}_${this.getLevel(this.level)}_${this.getLesson(this.lesson)}`
+      // });
     }
   }
 };

@@ -111,7 +111,11 @@ export default {
         {
           description: "Service Fee",
           value: this.parseCurrency(
-            this.getServiceFee(this.course, this.level, this.lesson)
+            this.getServiceFee(
+              parseInt(this.course),
+              parseInt(this.level),
+              parseInt(this.lesson)
+            )
           )
           //   value: this.parseCurrency(this.getServiceFee(5, 0, 0))
         }
@@ -137,14 +141,15 @@ export default {
           payments_details: this.card_details
         })
         .then(result => {
-          return this.$store.dispatch("CLOSE", {
-            sender: this.$store.state.sender,
-            postback: "CB_PAYMENT"
-          });
+          // return this.$store.dispatch("CLOSE", {
+          //   sender: this.$store.state.sender,
+          //   postback: "CB_PAYMENT"
+          // });
+          this.$router.push('/qrcode');
         })
-        .then(result => {
-          console.log("Success enrollment");
-        })
+        // .then(result => {
+        //   console.log("Success enrollment");
+        // })
         .catch(err => {
           console.log("Submit enrollment err :", err);
         });
